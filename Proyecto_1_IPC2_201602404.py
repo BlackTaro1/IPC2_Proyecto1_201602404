@@ -3,22 +3,32 @@ def ImprimirDtEst():
     print('* 201602404')
     print('* Introducción a la programación y computación 2 sección "D"')
     print('* Ingenieria en Ciencias y Sistemas')
-    print('* 4to. Semestre')         
+    print('* 4to. Semestre \n')  
+
+def CargarArch():
+    print('* Kevin Estuardo Secaida Molina')
+    print('* 201602404')
+    print('* Introducción a la programación y computación 2 sección "D"')
+    print('* Ingenieria en Ciencias y Sistemas')
+    print('* 4to. Semestre \n')         
 
 def Menu():
-        opcion = 0
-        while opcion != 2:
+          opcion = 0
+          while opcion != 6:
             print('----- Menu Principal -----')
             print('1. Cargar archivo.')
             print('2. Procesar archivo')
             #print('3. Escribir archivo de salida')
             #print('4. Mostrar datos del estudiante')
             #print('5. Generar gráfica')     
-            #print('6. Salir')
+            print('6. Salir')
             opcion = input()
             if opcion == '1':
+                print('Los datos del estudiante son: \n')
                 ImprimirDtEst()
-                opcion = 1
+            elif opcion == '2':
+                print('vale verga la vida')
+                CargarArch()
             else:
-                opcion = 2
+                opcion = 6
 Menu()

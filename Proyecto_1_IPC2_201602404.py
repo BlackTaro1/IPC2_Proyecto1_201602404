@@ -6,15 +6,15 @@ def ImprimirDtEst():
     print('* 4to. Semestre \n')  
 
 def CargarArch():
-    from xml.etree.ElementTree import parse, Element
-    nombre_arch = 'Taro.xml'
-    doc_xml = parse(nombre_arch)
-    raiz = doc_xml.getroot()
-    print(raiz)
+    #from xml.etree.ElementTree import parse, Element
+    #nombre_arch = 'Taro.xml'
+    #doc_xml = parse(nombre_arch)
+    #raiz = doc_xml.getroot()
+    #print(raiz)
     
-    print ()
+    #print ()
 
-    #print('* Kevin Estuardo Secaida Molina')
+    print('* Kevin Estuardo Secaida Molina')
     #print('* 201602404')
     #print('* Introducción a la programación y computación 2 sección "D"')
     #print('* Ingenieria en Ciencias y Sistemas')

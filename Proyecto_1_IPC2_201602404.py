@@ -19,10 +19,10 @@ def Menu():
           while opcion != 6:
             print('----- Menu Principal -----')
             print('1. Cargar archivo.')
-            #print('2. Procesar archivo')
-            #print('3. Escribir archivo de salida')
+            print('2. Procesar archivo')
+            print('3. Escribir archivo de salida')
             print('4. Mostrar datos del estudiante')
-            #print('5. Generar gráfica')     
+            print('5. Generar gráfica')     
             print('6. Salir')
             opcion = input()
             ruta = ''

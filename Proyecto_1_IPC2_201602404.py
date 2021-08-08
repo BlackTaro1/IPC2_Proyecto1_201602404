@@ -11,6 +11,11 @@ def ImprimirDtEst():
 def CargarArch():
     archivo_xml=open("Taro.xml", "w")
     print(archivo_xml)
+
+    tree = ET.parse("Taro.xml")
+    raiz = tree.getroot()
+    print(raiz)
+  
  
 
 def Menu():

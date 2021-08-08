@@ -1,5 +1,5 @@
-from xml.etree.ElementTree import TreeBuilder
-
+from tkinter import *
+from tkinter import filedialog
 
 def ImprimirDtEst():
     print('* Kevin Estuardo Secaida Molina')
@@ -8,11 +8,20 @@ def ImprimirDtEst():
     print('* Ingenieria en Ciencias y Sistemas')
     print('* 4to. Semestre \n')  
 
-def CargarArch(ruta):
-    import xml.etree.ElementTree as ET
-    tree = ET.parse(ruta)
-    raiz = tree.getroot()
-    print('* Kevin Estuardo Secaida Molina', raiz)   
+def CargarArch():
+    raiz = Tk()
+    archivo = filedialog.askopenfilename(title="abrir")
+    print(archivo)
+
+    Button(raiz, text="Abrir Archivo", command=CargarArch).pack()
+
+
+    raiz.mainloop()
+
+    #import xml.etree.ElementTree as ET
+    #tree = ET.parse(ruta)
+    #raiz = tree.getroot()
+    #print('* Kevin Estuardo Secaida Molina', raiz)   
 
 def Menu():
           opcion = 0
@@ -28,7 +37,7 @@ def Menu():
             ruta = ''
             if opcion == '1':
                 print('El archivo a cargar es: ', ruta)
-                ruta = input()
+               
                 CargarArch()
             elif opcion == '4':
                 print('Los datos del estudiante son: \n')

@@ -7,11 +7,16 @@ def ImprimirDtEst():
     print('* Ingenieria en Ciencias y Sistemas')
     print('* 4to. Semestre \n')  
 
-def CargarArch():
+def CargarArch(ruta):
     tree = ET.parse("test.xml")
+    #tree = ET.parse(ruta)
     raiz = tree.getroot()
     print(raiz)
-  
+    
+    print('\nCoordenadas de todos los terrenos.')
+    for elemento in raiz: 
+        #for subelemento in elemento: 
+            print(elemento.attrib)
  
 
 def Menu():
@@ -28,7 +33,8 @@ def Menu():
             ruta = ''
             if opcion == '1':
                 print('El archivo a cargar es: ')
-                CargarArch()
+                ruta = input()
+                CargarArch(ruta)
             elif opcion == '4':
                 print('Los datos del estudiante son: \n')
                 ImprimirDtEst()

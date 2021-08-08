@@ -1,5 +1,4 @@
-from tkinter import *
-from tkinter import filedialog
+import xml.etree.ElementTree as ET
 
 def ImprimirDtEst():
     print('* Kevin Estuardo Secaida Molina')
@@ -9,19 +8,11 @@ def ImprimirDtEst():
     print('* 4to. Semestre \n')  
 
 def CargarArch():
-    raiz = Tk()
-    archivo = filedialog.askopenfilename(title="abrir")
-    print(archivo)
+    tree = ET.parse('Taro.xml')
+    raiz = tree.getroot()
+    print(raiz)
 
-    Button(raiz, text="Abrir Archivo", command=CargarArch).pack()
-
-
-    raiz.mainloop()
-
-    #import xml.etree.ElementTree as ET
-    #tree = ET.parse(ruta)
-    #raiz = tree.getroot()
-    #print('* Kevin Estuardo Secaida Molina', raiz)   
+ 
 
 def Menu():
           opcion = 0
@@ -36,8 +27,7 @@ def Menu():
             opcion = input()
             ruta = ''
             if opcion == '1':
-                print('El archivo a cargar es: ', ruta)
-               
+                print('El archivo a cargar es: ')
                 CargarArch()
             elif opcion == '4':
                 print('Los datos del estudiante son: \n')

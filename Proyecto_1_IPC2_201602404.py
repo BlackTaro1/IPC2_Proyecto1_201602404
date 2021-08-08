@@ -1,4 +1,5 @@
 import xml.etree.ElementTree as ET
+from io import open 
 
 def ImprimirDtEst():
     print('* Kevin Estuardo Secaida Molina')
@@ -8,10 +9,8 @@ def ImprimirDtEst():
     print('* 4to. Semestre \n')  
 
 def CargarArch():
-    tree = ET.parse('Taro.xml')
-    raiz = tree.getroot()
-    print(raiz)
-
+    archivo_xml=open("Taro.xml", "w")
+    print(archivo_xml)
  
 
 def Menu():

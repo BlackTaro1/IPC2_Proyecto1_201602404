@@ -1,4 +1,5 @@
 import xml.etree.ElementTree as ET
+import os
 
 def ImprimirDtEst():
     print('* Kevin Estuardo Secaida Molina')
@@ -12,11 +13,25 @@ def CargarArch(ruta):
     tree = ET.parse(ruta)
     raiz = tree.getroot()
     print(raiz)
-    
+    # for elemento in raiz:
+    #     print('Estudiante',elemento.attrib['x'],'ha sido insertado.')
+    #     estudiantes.crearEstudiante(elemento.attrib['carnet'], elemento.attrib['nombre']) # inserta estudiante
+    #     for subelemento in elemento.iter('curso'):
+    #         estudiante = estudiantes.getEstudiante(elemento.attrib['carnet'])#se busca estudiante
+    #         estudiante.lista_cursos.insertar(subelemento.attrib['codigo'], subelemento.attrib['nombre'], subelemento.text) # se asigna curso
+    #         print('Se asigno el curso', subelemento.attrib['nombre'],'al estudiante',estudiante.nombre)
+
     print('\nCoordenadas de todos los terrenos.')
     for elemento in raiz: 
         #for subelemento in elemento: 
             print(elemento.attrib)
+
+def listArchivos():
+    ejemplo_dir =  'C:/Users/SM/Documents/GitHub/P1/IPC2_Proyecto1_201602404'
+    with os.scandir(ejemplo_dir) as ficheros:
+        ficheros = [fichero.name for fichero in ficheros
+        if fichero.is_file() and fichero.name.endswith('.xml')]
+        print('\n', ficheros, '\n')
  
 
 def Menu():
@@ -30,7 +45,9 @@ def Menu():
             "5.- Tamaño \n" +
             "6.- Salir \n" )
         num = input("Elija la opción: ")
-        if num == "1":
+        if num == "0":
+            listArchivos()
+        elif num == "1":
             ruta = input("Nombre del archivo: ")
             CargarArch(ruta)
         #elif num == "2":
@@ -44,27 +61,4 @@ def Menu():
 
         elif num == "6":
             return False
-            
-
-        #   opcion = 0
-        #   while opcion != 6:
-        #     print('----- Menu Principal -----')
-        #     print('1. Cargar archivo.')
-        #     print('2. Procesar archivo')
-        #     print('3. Escribir archivo de salida')
-        #     print('4. Mostrar datos del estudiante')
-        #     print('5. Generar gráfica')     
-        #     print('6. Salir')
-        #     opcion = input()
-        #     ruta = ''
-        #     if opcion == '1':
-        #         print('El archivo a cargar es: ')
-        #         ruta = input()
-        #         CargarArch(ruta)
-        #     elif opcion == '4':
-        #         print('Los datos del estudiante son: \n')
-        #         ImprimirDtEst()
-
-        #     else:
-        #         opcion = 6
 Menu()

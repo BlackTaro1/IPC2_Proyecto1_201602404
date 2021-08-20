@@ -44,7 +44,7 @@ def Menu():
             "4.- Busqueda Binaria \n" +
             "5.- Tamaño \n" +
             "6.- Salir \n" )
-        num = input("Elija la opción: ")
+        num = input("Elija la opción: \n")
         if num == "0":
             listArchivos()
         elif num == "1":

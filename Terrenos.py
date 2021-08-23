@@ -1,11 +1,8 @@
 class Terreno:
 
-    def __init__(self, nombre, dimension, iniciox, inicioy, finx, finy):
+    def __init__(self, nombre, dimension, combustible):
         self.nombre = nombre
         self.dimension = dimension
-        self.iniciox = iniciox
-        self.inicioy = inicioy
-        self.finx = finx
-        self.finy = finy
+        self.combustible = 
         self.siguiente = None
         self.anterior = None

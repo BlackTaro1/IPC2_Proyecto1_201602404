@@ -5,8 +5,9 @@ class ListaSimple():
         self.inicio = None
         self.size = 0
 
-    def insertarTerreno(self, nuevo):
+    def insertarTerreno(self, Terreno):
         self.size += 1
+        nuevo = Terreno
         if self.inicio: #comparamos el nodo inicio 
                 anterior = self.inicio #si esta vacio entonces inciamos si no pasamos al siguiente
                 while anterior.siguiente != None:

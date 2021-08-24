@@ -12,7 +12,7 @@ def ImprimirDtEst():
     print('* 4to. Semestre \n')
 
 def CargarArch():
-    tree = ET.parse("test.xml")
+    tree = ET.parse("entrada.xml")
     #tree = ET.parse(ruta)
     raiz = tree.getroot()
     print(raiz)

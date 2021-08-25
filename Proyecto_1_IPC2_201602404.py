@@ -5,6 +5,7 @@ import xml.etree.ElementTree as ET
 import os
 import json
 listaTerreno = Terreno('Terreno 1', '1,1', 1, 1,1,1, 1,1)
+listaOficial = Terreno('', '1,1', 1, 1,1,1, 1,1)
 Posicioninicial = Posicion(0,0, 0)
 
 def ImprimirDtEst():
@@ -61,7 +62,9 @@ def CargarArch():
                     Posicioninicial.posy = pos["x"]
                     listaTerreno.posicion = Posicioninicial
                     print(listaTerreno.posicion.posy, listaTerreno.posicion.posx, listaTerreno.posicion.combustible)
-            
+        #lst = ListaSimple.insertarTerreno(listaOficial, listaTerreno)
+        tg = listaTerreno, "hola :3"
+        lst = ListaSimple.imprimir(listaTerreno)
             #print(subelemento.attrib)
             #print("subelemento.text")
 

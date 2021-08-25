@@ -3,5 +3,11 @@ class Posicion():
        self.posx = posx
        self.posy = posy
        self.combustible = combustible
-       self.sig = None
-       self.ant = None
+       self.izquierda = None
+       self.derecha = None
+       self.arriba = None
+       self.abajo = None
+
+class encabezadoPosicion():
+    def __init__(self) -> None:
+        self.id

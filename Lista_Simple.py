@@ -6,8 +6,11 @@ class ListaSimple():
         self.size = 0
 
     def insertarTerreno(self, Terreno):
-        self.size += 1
-        nuevo = Terreno
+        #self.size += 1
+        print(Terreno.attrib)
+       #nuevo = Terreno
+        self = Terreno
+        nuevo = self
         if self.inicio: #comparamos el nodo inicio 
                 anterior = self.inicio #si esta vacio entonces inciamos si no pasamos al siguiente
                 while anterior.siguiente != None:
@@ -15,6 +18,17 @@ class ListaSimple():
                 anterior.siguiente = nuevo
         else: #si esta vacia entonces el nodo inicio es nuevo
                 self.inicio = nuevo
+
+    def insertarCombustible(self, combustible):
+        self.inicio = combustible
+        
+
+
+
+    def imprimir(cadena):
+        print(cadena)
+        print("hola prro")
+
 
     def listadoTerrenos(self): #Metodo para imprimir los datos en la lista.
             tmp = self.inicio

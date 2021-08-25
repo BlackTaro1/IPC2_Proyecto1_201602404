@@ -1,8 +1,11 @@
 from Terrenos import Terreno
+from Posicion import Posicion
+from Lista_Simple import ListaSimple
 import xml.etree.ElementTree as ET
 import os
-import Lista_Simple as lstS
-import Doble_enlazada as dEnz
+import json
+listaTerreno = Terreno('Terreno 1', '1,1', 1, 1,1,1, 1,1)
+Posicioninicial = Posicion(0,0, 0)
 
 def ImprimirDtEst():
     print('* Kevin Estuardo Secaida Molina')
@@ -10,22 +13,61 @@ def ImprimirDtEst():
     print('* Introducción a la programación y computación 2 sección "D"')
     print('* Ingenieria en Ciencias y Sistemas')
     print('* 4to. Semestre \n')
-
+ 
 def CargarArch():
-    tree = ET.parse("entrada.xml")
+    tree = ET.parse("test.xml")
     #tree = ET.parse(ruta)
-    raiz = tree.getroot()
-    print(raiz)
+    inicio = tree.getroot()
+    print(inicio)
     print('\nTodos los Atributos')
-    for elemento in raiz: 
-        print(elemento.tag, elemento.attrib)
-        #print(elemento.attrib)
-        for subelemento in elemento: 
-            print(subelemento.tag, subelemento.attrib)
-            # print(subelemento.attrib)
-            print(subelemento.text)
+    for elemento in inicio:
+        #print(elemento.tag, elemento.attrib)
+        atributo = json.dumps(elemento.attrib)
+        terrenoname = json.loads(atributo)
+        nombre = terrenoname["nombre"]
+        listaTerreno.nombre = nombre
+        print("\n", listaTerreno.nombre,"\n")
+        for subelemento in elemento:
+            #print(subelemento.tag)
+            if subelemento.tag == "dimension":
+                for subelemento1 in subelemento:
+                    #print(subelemento1.text)
+                    if subelemento1.tag == "m":
+                        listaTerreno.dimensionm = subelemento1.text
+                    if subelemento1.tag == "n":
+                        listaTerreno.dimensionn = subelemento1.text
+                print(listaTerreno.dimensionm, listaTerreno.dimensionn)
+            if subelemento.tag == "posicioninicio":
+                for subelemento1 in subelemento:
+                    #print(subelemento1.text)
+                    if subelemento1.tag == "x":
+                        listaTerreno.iniciox = subelemento1.text
+                    if subelemento1.tag == "y":
+                        listaTerreno.inicioy = subelemento1.text
+                print(listaTerreno.inicioy, listaTerreno.iniciox)
+            if subelemento.tag == "posicionfin":
+                for subelemento1 in subelemento:
+                    #print(subelemento1.text)
+                    if subelemento1.tag == "x":
+                        listaTerreno.finx = subelemento1.text
+                    if subelemento1.tag == "y":
+                        listaTerreno.finy = subelemento1.text
+                print(listaTerreno.finx, listaTerreno.finy)
+            if subelemento.tag == "posicion":
+                    Posicioninicial.combustible = subelemento.text
+                    gas = json.dumps(subelemento.attrib)
+                    pos = json.loads(gas)
+                    Posicioninicial.posx = pos["y"]
+                    Posicioninicial.posy = pos["x"]
+                    listaTerreno.posicion = Posicioninicial
+                    print(listaTerreno.posicion.posy, listaTerreno.posicion.posx, listaTerreno.posicion.combustible)
+            
+            #print(subelemento.attrib)
+            #print("subelemento.text")
 
-   
+
+
+
 
 def listArchivos():
     ejemplo_dir =  'C:/Users/SM/Documents/GitHub/P1/IPC2_Proyecto1_201602404'
@@ -54,7 +96,7 @@ def listaDoble():
 
 
 def Menu():
-
+    
     while(True):
         print("-----Menu-----\n"+
             "0.- Enlistar los archivos (.xml) \n"+
@@ -70,7 +112,8 @@ def Menu():
         elif num == "1":
             #ruta = input("Nombre del archivo: ")
         #    CargarArch(ruta)
-             CargarArch()
+            CargarArch()
+            #asd = ListaSimple.imprimir('fjalkñd')
         #elif num == "2":
 
        # elif num == "3":

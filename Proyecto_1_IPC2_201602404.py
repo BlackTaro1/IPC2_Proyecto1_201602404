@@ -1,14 +1,15 @@
-from matrizT import listaEncabezado
+from encabezado import listaEncabezado
 from Terrenos import Terreno
 from Posicion import Posicion
-from Lista_Simple import ListaSimple
+from listaDoblePosicion import listaDoblePosicion
 import xml.etree.ElementTree as ET
 import os
 import json
-ls = ListaSimple()
+ls = listaDoblePosicion()
 listaTerreno = Terreno('Terreno 1', '1,1', 1, 1,1,1, 1,1)
 listaOficial = Terreno('', '1,1', 1, 1,1,1, 1,1)
-Posicioninicial = Posicion(0,0, 0)
+Posicioninicial = Posicion(None, None, None)
+
 
 def ImprimirDtEst():
     print('* Kevin Estuardo Secaida Molina')
@@ -30,6 +31,7 @@ def CargarArch():
         nombre = terrenoname["nombre"]
         listaTerreno.nombre = nombre
         print("\n", listaTerreno.nombre,"\n")
+        a = Posicion(None, None, None)
         for subelemento in elemento:
             #print(subelemento.tag)
             if subelemento.tag == "dimension":
@@ -57,21 +59,21 @@ def CargarArch():
                         listaTerreno.finy = subelemento1.text
                 print(listaTerreno.finx, listaTerreno.finy)
             if subelemento.tag == "posicion":
-                    Posicioninicial.combustible = subelemento.text
+                    #Posicioninicial.combustible = subelemento.text
                     gas = json.dumps(subelemento.attrib)
                     pos = json.loads(gas)
-                    Posicioninicial.posx = pos["y"]
-                    Posicioninicial.posy = pos["x"]
-                    listaTerreno.posicion = Posicioninicial
-                    a = ls.insertar(Posicioninicial.posx, Posicioninicial.posy, Posicioninicial.combustible)
-                    print(a)
+                    # Posicioninicial.posx = 
+                    # Posicioninicial.posy = pos["x"]
+                    # listaTerreno.posicion = Posicioninicial
+                    a = ls.insertarPosicion(pos["y"], pos["x"], subelemento.text, a)
+                    
+                    #Posicioninicial = a
+                    #print(a.combustible, "hi")
                   #  print(listaTerreno.posicion.posy, listaTerreno.posicion.posx, listaTerreno.posicion.combustible)
         #lst = ListaSimple.insertarTerreno(listaOficial, listaTerreno)
-        tg = listaTerreno, "hola :3"
-        lst = ListaSimple.imprimir(listaTerreno)
             #print(subelemento.attrib)
             #print("subelemento.text")
-
+        ls.imprimir(a)
 
 
 

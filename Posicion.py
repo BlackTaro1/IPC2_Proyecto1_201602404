@@ -3,7 +3,5 @@ class Posicion():
        self.posx = posx #fila
        self.posy = posy #columna
        self.combustible = combustible # combustible
-       self.izquierda = None
-       self.derecha = None
-       self.arriba = None
-       self.abajo = None
+       self.anterior = None
+       self.siguiente = None

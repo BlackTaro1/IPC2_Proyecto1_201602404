@@ -1,9 +1,11 @@
+from matrizT import listaEncabezado
 from Terrenos import Terreno
 from Posicion import Posicion
 from Lista_Simple import ListaSimple
 import xml.etree.ElementTree as ET
 import os
 import json
+ls = ListaSimple()
 listaTerreno = Terreno('Terreno 1', '1,1', 1, 1,1,1, 1,1)
 listaOficial = Terreno('', '1,1', 1, 1,1,1, 1,1)
 Posicioninicial = Posicion(0,0, 0)
@@ -61,7 +63,9 @@ def CargarArch():
                     Posicioninicial.posx = pos["y"]
                     Posicioninicial.posy = pos["x"]
                     listaTerreno.posicion = Posicioninicial
-                    print(listaTerreno.posicion.posy, listaTerreno.posicion.posx, listaTerreno.posicion.combustible)
+                    a = ls.insertar(Posicioninicial.posx, Posicioninicial.posy, Posicioninicial.combustible)
+                    print(a)
+                  #  print(listaTerreno.posicion.posy, listaTerreno.posicion.posx, listaTerreno.posicion.combustible)
         #lst = ListaSimple.insertarTerreno(listaOficial, listaTerreno)
         tg = listaTerreno, "hola :3"
         lst = ListaSimple.imprimir(listaTerreno)

@@ -13,6 +13,7 @@ class Terreno:
         self.finy = finy
         self.siguiente = None
         self.anterior = None
+        self.accesoNodo = None
 
     
 

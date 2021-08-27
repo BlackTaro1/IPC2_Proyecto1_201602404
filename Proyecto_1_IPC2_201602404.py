@@ -60,20 +60,22 @@ def CargarArch():
                 print(listaTerreno.finx, listaTerreno.finy)
             if subelemento.tag == "posicion":
                     #Posicioninicial.combustible = subelemento.text
+                    P1 = subelemento.text
                     gas = json.dumps(subelemento.attrib)
                     pos = json.loads(gas)
                     # Posicioninicial.posx = 
                     # Posicioninicial.posy = pos["x"]
                     # listaTerreno.posicion = Posicioninicial
-                    a = ls.insertarPosicion(pos["y"], pos["x"], subelemento.text, a)
-                    
-                    #Posicioninicial = a
-                    #print(a.combustible, "hi")
+                    #ls.insertar(pos["y"], pos["x"], Posicioninicial.combustible)
+                    ls.insertar(pos["x"], pos["y"], P1)
+                    #print(a, "hi")
                   #  print(listaTerreno.posicion.posy, listaTerreno.posicion.posx, listaTerreno.posicion.combustible)
         #lst = ListaSimple.insertarTerreno(listaOficial, listaTerreno)
             #print(subelemento.attrib)
             #print("subelemento.text")
-        ls.imprimir(a)
+        #ls.imprimir()
+    for i in ls.iterar():
+        print(i)
 
 
 

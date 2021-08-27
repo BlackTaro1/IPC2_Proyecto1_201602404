@@ -4,8 +4,29 @@ from encabezado import listaEncabezado
 
 class listaDoblePosicion():
     def __init__(self):
-        self.inicio = Posicion("", "", -1)
+        self.inicio = None
+        self.fin = None
+        self.contador = 0
 
+    def insertar(self, Posx, Posy, Combustible):
+        nodo = Posicion(Posx, Posy, Combustible)
+        print("nodo combustible", nodo.combustible)
+        if self.inicio is None:
+            self.inicio = nodo
+            self.fin = self.inicio
+        else:
+            nodo.anterior = self.fin
+            self.fin.siguiente = nodo
+            self.fin = nodo
+        self.contador +=1
+
+    def iterar(self):
+        actual = self.inicio
+        while actual:
+            combustible = actual.combustible
+            actual = actual.siguiente
+            yield combustible
+    
     # def insertar(self, posx, posy, combustible):
     #     nuevo = Posicion(posx, posy, combustible)
     #     inicio = self.inicio
@@ -15,21 +36,21 @@ class listaDoblePosicion():
     #         self.eFila.setEncabezado(ePosx)
     #         return ePosx
     
-    def insertarPosicion(self, posx, posy, combustible, listaPos):
-        nuevo = Posicion(posx, posy, combustible)
-        #print(nuevo.posx, nuevo.posy, nuevo.combustible, "l")
-        nuevo.siguiente = None
-        if listaPos.combustible == None:
-             listaPos = nuevo
-        else:
-             aux = listaPos
-        #     cont = 0
-             while aux != None:
-                print(aux.combustible, " < algo")
-                aux = aux.siguiente
-        aux = nuevo
-        return listaPos
-    
+    # def insertarPosicion(self, posx, posy, combustible, listaPos):
+    #     nuevo = Posicion(posx, posy, combustible)
+    #     print(nuevo.posx, nuevo.posy, nuevo.combustible, "datos recividos")
+    #     nuevo.siguiente = None
+    #     if listaPos.combustible == None:
+    #          listaPos = nuevo
+    #     else:
+    #         aux = listaPos
+    #         cont = 0
+    #         while aux != None:
+    #            print(aux.posx, "posicion x", aux.posy, "posicion y", aux.combustible, "combustible")
+    #            aux = aux.siguiente
+    #            nuevo = aux
+    #     print(listaPos.posx, "soy el nodo actual")
+        
     def imprimir(self, listaPos):
         cont = 0
         if listaPos.combustible == None:
@@ -41,6 +62,7 @@ class listaDoblePosicion():
                 print(aux.posx, aux.posy, aux.combustible)
                 aux = aux.siguiente
                 cont += 1
+        return listaPos
 
     
 

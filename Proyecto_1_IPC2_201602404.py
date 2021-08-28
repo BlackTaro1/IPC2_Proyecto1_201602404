@@ -1,3 +1,4 @@
+from ListaSimpleTerrenos import listaSimpleTerrenos, nodoTerreno
 from encabezado import listaEncabezado
 from Terrenos import Terreno
 from Posicion import Posicion
@@ -6,6 +7,7 @@ import xml.etree.ElementTree as ET
 import os
 import json
 ls = listaDoblePosicion()
+lsS = listaSimpleTerrenos()
 listaTerreno = Terreno('Terreno 1', '1,1', 1, 1,1,1, 1,1)
 listaOficial = Terreno('', '1,1', 1, 1,1,1, 1,1)
 Posicioninicial = Posicion(None, None, None)
@@ -19,63 +21,84 @@ def ImprimirDtEst():
     print('* 4to. Semestre \n')
  
 def CargarArch():
-    tree = ET.parse("test.xml")
+    tree = ET.parse("entrada.xml")
     #tree = ET.parse(ruta)
     inicio = tree.getroot()
     print(inicio)
+    # for nodo in inicio.iter("TERRENO"):
+    #     nombre = nodo.attrib["nombre"]
+    #     for n, m in inicio.iter("DIMENSION"):
+    #         n = int(nodo.attrib['n'])
+    #         m = int(nodo.attrib['m'])
+    #         print(m,n, nombre,"h")
+    #         xini = None
+    #         yini = None
+    #         xfin = None
+    #         yfin = None
+    #         for inicio, fin in zip(nodo.iter("posicioninicio"), nodo.iter("posicionfin")):
+    #             for xin, yin, xfi, yfi in zip(inicio.iter("x"), inicio.iter("y"), fin.iter("x"), fin.iter("y")):
+    #                 xini = int(xin.text)
+    #                 yini = int(yin.text)
+    #                 xfin = int(xfi.text)
+    #                 yfin = int(yfi.text)
+    #                 print(xini, "x inicial")
+    #lsS.insertarenlistaVacia(nombre, m, n, xini, yini, xfin, yfin)
+    #lsS.iterar()
+    
     print('\nTodos los Atributos')
     for elemento in inicio:
-        #print(elemento.tag, elemento.attrib)
+        print(elemento.tag, elemento.attrib)
         atributo = json.dumps(elemento.attrib)
         terrenoname = json.loads(atributo)
         nombre = terrenoname["nombre"]
+        print(nombre, "nombre del terreno")
         listaTerreno.nombre = nombre
         print("\n", listaTerreno.nombre,"\n")
         a = Posicion(None, None, None)
         for subelemento in elemento:
-            #print(subelemento.tag)
+            print(subelemento.tag)
             if subelemento.tag == "dimension":
                 for subelemento1 in subelemento:
-                    #print(subelemento1.text)
+                    print(subelemento1.text)
                     if subelemento1.tag == "m":
                         listaTerreno.dimensionm = subelemento1.text
                     if subelemento1.tag == "n":
-                        listaTerreno.dimensionn = subelemento1.text
+                         listaTerreno.dimensionn = subelemento1.text
                 print(listaTerreno.dimensionm, listaTerreno.dimensionn)
             if subelemento.tag == "posicioninicio":
-                for subelemento1 in subelemento:
-                    #print(subelemento1.text)
-                    if subelemento1.tag == "x":
-                        listaTerreno.iniciox = subelemento1.text
-                    if subelemento1.tag == "y":
-                        listaTerreno.inicioy = subelemento1.text
-                print(listaTerreno.inicioy, listaTerreno.iniciox)
+                 for subelemento1 in subelemento:
+                     #print(subelemento1.text)
+                     if subelemento1.tag == "x":
+                         listaTerreno.iniciox = subelemento1.text
+                     if subelemento1.tag == "y":
+                         listaTerreno.inicioy = subelemento1.text
+    #             print(listaTerreno.inicioy, listaTerreno.iniciox)
             if subelemento.tag == "posicionfin":
                 for subelemento1 in subelemento:
-                    #print(subelemento1.text)
+    #                 #print(subelemento1.text)
                     if subelemento1.tag == "x":
-                        listaTerreno.finx = subelemento1.text
+                         listaTerreno.finx = subelemento1.text
                     if subelemento1.tag == "y":
-                        listaTerreno.finy = subelemento1.text
+                         listaTerreno.finy = subelemento1.text
                 print(listaTerreno.finx, listaTerreno.finy)
             if subelemento.tag == "posicion":
-                    #Posicioninicial.combustible = subelemento.text
+                     #Posicioninicial.combustible = subelemento.text
                     P1 = subelemento.text
                     gas = json.dumps(subelemento.attrib)
                     pos = json.loads(gas)
-                    # Posicioninicial.posx = 
-                    # Posicioninicial.posy = pos["x"]
-                    # listaTerreno.posicion = Posicioninicial
-                    #ls.insertar(pos["y"], pos["x"], Posicioninicial.combustible)
+    #                 # Posicioninicial.posx = 
+    #                 # Posicioninicial.posy = pos["x"]
+    #                 # listaTerreno.posicion = Posicioninicial
+    #                 #ls.insertar(pos["y"], pos["x"], Posicioninicial.combustible)
                     ls.insertar(pos["x"], pos["y"], P1)
-                    #print(a, "hi")
-                  #  print(listaTerreno.posicion.posy, listaTerreno.posicion.posx, listaTerreno.posicion.combustible)
-        #lst = ListaSimple.insertarTerreno(listaOficial, listaTerreno)
-            #print(subelemento.attrib)
-            #print("subelemento.text")
-        #ls.imprimir()
+    #                 #print(a, "hi")
+    #               #  print(listaTerreno.posicion.posy, listaTerreno.posicion.posx, listaTerreno.posicion.combustible)
+    #     #lst = ListaSimple.insertarTerreno(listaOficial, listaTerreno)
+    #         #print(subelemento.attrib)
+    #         #print("subelemento.text")
+    #     #ls.imprimir()
     for i in ls.iterar():
-        print(i)
+         print(i)
 
 
 

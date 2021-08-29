@@ -4,7 +4,7 @@ class listaDoblePosicion():
     def __init__(self):
         self.inicio = None
         self.fin = None
-        self.size = 0
+        self.contador = 0
 
     def insertar(self, Posx, Posy, Combustible):
         nodo = Posicion(Posx, Posy, Combustible)
@@ -27,7 +27,7 @@ class listaDoblePosicion():
     def iterar(self):
         actual = self.inicio
         while actual:
-            combustible = actual.combustible
+            combustible = actual.gas
             actual = actual.siguiente
             yield combustible
 
@@ -59,13 +59,13 @@ class listaDoblePosicion():
         
     def imprimir(self, listaPos):
         cont = 0
-        if listaPos.combustible == None:
+        if listaPos.a == None:
             print("no hay datos")
         else:
             aux = listaPos
             while aux != None:
                 print("Entre ", cont)
-                print(aux.posx, aux.posy, aux.combustible)
+                print(aux.b, aux.c, aux.a)
                 aux = aux.siguiente
                 cont += 1
         return listaPos

@@ -7,7 +7,6 @@ class nodoTerreno():
         self.dimensionn = dn
         self.iniciox = iniciox
         self.inicioy = inicioy
-        #self.posicion = posicion
         self.finx = finx
         self.finy = finy
         self.listaPosiciones = listaDoblePosicion()
@@ -38,4 +37,11 @@ class listaSimpleTerrenos():
             actual = actual.siguiente
             yield datos
 
+    def getTerreno(self, nombre):
+        temp = self.inicio
+        for x in range(self.size):
+            if temp.nombre == nombre:
+                return temp
+            temp = temp.siguiente
+        
         

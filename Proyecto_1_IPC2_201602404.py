@@ -1,55 +1,24 @@
+from Terrenosvfall import Terreno
+from listaDoblePosicion import listaDoblePosicion
 import xml.etree.ElementTree as ET
 import os
 from ListaSimpleTerrenos import listaSimpleTerrenos as LsT
 
+
 class Principal:
     def __init__(self):
         self.LsT = LsT()
-        self.Menu = self
-    
-    def Menu(self):
-        
-        while(True):
-            print("-----Menu-----\n"+
-            "0.- Enlistar los archivos (.xml) \n"+
-            "1.- Cargar Archivo \n"+
-            "2.- Procesar Archivo \n" +
-            "3.- Escribir Archivo de salida \n" +
-            "4.- Datos del estudiante \n" +
-            "5.- Gererar gráfica \n" +
-                "6.- Salir \n" )
-                
-            num = input("Elija la opción: \n")
-            if num == "0":
-                self.listArchivos()
-            elif num == "1":
-            #ruta = input("Nombre del archivo: ")
-        #    CargarArch(ruta)
-                self.CargarArch()
-            #asd = ListaSimple.imprimir('fjalkñd')
-        #elif num == "2":
-
-       # elif num == "3":
-
-            elif num == "4":
-                print('Los datos del estudiante son: \n')
-                self.ImprimirDtEst()
-        #elif num == "5":
-
-            elif num == "6":
-                return False
-    Menu()
 
     def ImprimirDtEst():
-        print('* Kevin Estuardo Secaida Molina')
-        print('* 201602404')
-        print('* Introducción a la programación y computación 2 sección "D"')
-        print('* Ingenieria en Ciencias y Sistemas')
-        print('* 4to. Semestre \n')
+            print('* Kevin Estuardo Secaida Molina')
+            print('* 201602404')
+            print('* Introducción a la programación y computación 2 sección "D"')
+            print('* Ingenieria en Ciencias y Sistemas')
+            print('* 4to. Semestre \n')
 
-    def CargarArch(self): #para cuando lo solicite el aux ingresar el archivo poner ruta dentro de los parentesis de cargarARch
-        tree = ET.parse("test.xml")
-        #tree = ET.parse(ruta)
+    def CargarArch(self, ruta): #para cuando lo solicite el aux ingresar el archivo poner ruta dentro de los parentesis de cargarARch
+        #tree = ET.parse("test.xml")
+        tree = ET.parse(ruta)
         inicio = tree.getroot()
         for nodo in inicio:
             nombre = nodo.attrib["nombre"]
@@ -61,17 +30,24 @@ class Principal:
                     yini = int(yin.text)
                     xfin = int(xfi.text)
                     yfin = int(yfi.text)
-                print(nombre,"\n", "hola", n , "h") #---> sale el nombre
-                print(n,m, xini, yini, xfin, yfin) #--- sale n,m,xinicial, y inicial, xfinal, y final
-            terrenos = self.LsT.insertarTerreno(nombre, n, m, xini, yini, xfin, yfin)
+                #print(nombre,"\n", "hola", n , "h") #---> sale el nombre
+                #print(nombre, "\n", n, m, xini, yini, xfin, yfin) #--- sale n,m,xinicial, y inicial, xfinal, y final
+                p2 = terrenos = self.LsT.insertarTerreno(nombre, n, m, xini, yini, xfin, yfin)
             for posiciones in nodo.iter("posicion"):
                 a = posiciones.text #---> gas
                 b = int(posiciones.attrib["x"]) #----> eje x 
                 c = int(posiciones.attrib["y"]) #---> eje y
-                print(a, "combustible",b, c)
-
+               # print(b, "pos x", c, "pos y", a, "combustible")
+                p1= terrenos.listaPosiciones.insertar(b, c, a)
+                print(p1, "x?", p2)
     
+    def getListaTerreno(self, nombre):
+        terreno = self.LsT.getTerreno(nombre)
+        listaDoblePosicion = terreno.listaPosiciones.getList()
         
+        
+
+
     def listArchivos():
         ejemplo_dir =  'C:/Users/SM/Documents/GitHub/P1/IPC2_Proyecto1_201602404'
         with os.scandir(ejemplo_dir) as ficheros:
@@ -94,5 +70,44 @@ class Principal:
 #         #elif num == "2":
 #         elif num == "6":
 #             Menu()
+
+
+class Menu():
+    
+    def Menu():
+        p = Principal()
+        while(True):
+            print("-----Menu-----\n"+
+            "0.- Enlistar los archivos (.xml) \n"+
+            "1.- Cargar Archivo \n"+
+            "2.- Procesar Archivo \n" +
+            "3.- Escribir Archivo de salida \n" +
+            "4.- Datos del estudiante \n" +
+            "5.- Gererar gráfica \n" +
+                "6.- Salir \n" )
+                
+            num = input("Elija la opción: \n")
+            if num == "0":
+                p.listArchivos
+                #listArchivos()
+            elif num == "1":
+                ruta = input("Nombre del archivo: ")
+                p.CargarArch(ruta)
+                #CargarArch()
+            #asd = ListaSimple.imprimir('fjalkñd')
+        #elif num == "2":
+
+       # elif num == "3":
+
+            elif num == "4":
+                print('Los datos del estudiante son: \n')
+                p.ImprimirDtEst()
+        #elif num == "5":
+
+            elif num == "6":
+                return False
+    Menu()
+
+
 
     

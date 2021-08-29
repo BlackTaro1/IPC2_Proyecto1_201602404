@@ -32,14 +32,15 @@ class Principal:
                     yfin = int(yfi.text)
                 #print(nombre,"\n", "hola", n , "h") #---> sale el nombre
                 #print(nombre, "\n", n, m, xini, yini, xfin, yfin) #--- sale n,m,xinicial, y inicial, xfinal, y final
-                p2 = terrenos = self.LsT.insertarTerreno(nombre, n, m, xini, yini, xfin, yfin)
+        
             for posiciones in nodo.iter("posicion"):
-                a = posiciones.text #---> gas
+                a = int(posiciones.text) #---> gas
                 b = int(posiciones.attrib["x"]) #----> eje x 
                 c = int(posiciones.attrib["y"]) #---> eje y
-               # print(b, "pos x", c, "pos y", a, "combustible")
-                p1= terrenos.listaPosiciones.insertar(b, c, a)
-                print(p1, "x?", p2)
+                #print(b, "pos x", c, "pos y", a, "combustible")
+            terreno = terrenos = self.LsT.insertarTerreno(nombre, n, m, xini, yini, xfin, yfin)
+            pos = terrenos.listaPosiciones.insertar(b, c, a)
+            print(pos.gas, terreno.listaPosiciones, "combustible", terreno.nombre)
     
     def getListaTerreno(self, nombre):
         terreno = self.LsT.getTerreno(nombre)

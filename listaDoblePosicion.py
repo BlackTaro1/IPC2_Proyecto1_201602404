@@ -4,24 +4,35 @@ class listaDoblePosicion():
     def __init__(self):
         self.inicio = None
         self.fin = None
-        self.contador = 0
+        self.size = 0
 
     def insertar(self, Posx, Posy, Combustible):
         nodo = Posicion(Posx, Posy, Combustible)
         #print("nodo combustible", nodo.combustible)
         if self.inicio is None:
             self.inicio = nodo
-            self.fin = self.inicio
-        else:
-            nodo.anterior = self.fin
-            self.fin.siguiente = nodo
             self.fin = nodo
-        self.contador +=1
+        else:
+            tmp = self.fin
+            tmp.siguiente = nodo
+            nodo.anterior = nodo
+            self.fin = nodo
+        self.size +=1
+        return nodo
+
+    
     
     def getPosiciones(self):
         tmp = self.inicio
         while tmp is not None:
             print("x", tmp.x, "y: ", tmp.y, "combustible: ", tmp.combustible)
+            tmp = tmp.siguiente
+    
+    def getPosicion(self, x,y):
+        tmp = self.inicio
+        while tmp is not None: #1.s -> 2.s -> 3.s -> 4.s -> None
+            if tmp.x == x and tmp.y==y:
+                return tmp
             tmp = tmp.siguiente
 
     def iterar(self):
@@ -33,6 +44,7 @@ class listaDoblePosicion():
 
     def getList(self):
         return self    
+
     # def insertar(self, posx, posy, combustible):
     #     nuevo = Posicion(posx, posy, combustible)
     #     inicio = self.inicio

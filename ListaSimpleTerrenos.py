@@ -30,6 +30,9 @@ class listaSimpleTerrenos():
             temp.siguiente = nuevo
         return nuevo
 
+
+        
+
     def iterar(self):
         actual = self.inicio
         while actual:

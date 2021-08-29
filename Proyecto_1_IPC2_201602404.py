@@ -1,5 +1,3 @@
-from Terrenosvfall import Terreno
-from listaDoblePosicion import listaDoblePosicion
 import xml.etree.ElementTree as ET
 import os
 from ListaSimpleTerrenos import listaSimpleTerrenos as LsT
@@ -40,7 +38,8 @@ class Principal:
                 #print(b, "pos x", c, "pos y", a, "combustible")
             terreno = terrenos = self.LsT.insertarTerreno(nombre, n, m, xini, yini, xfin, yfin)
             pos = terrenos.listaPosiciones.insertar(b, c, a)
-            print(pos.gas, terreno.listaPosiciones, "combustible", terreno.nombre)
+            print(pos.gas, terreno.listaPosiciones.iterar, "combustible", terreno.nombre)
+            
     
     def getListaTerreno(self, nombre):
         terreno = self.LsT.getTerreno(nombre)

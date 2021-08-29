@@ -43,44 +43,10 @@ class listaDoblePosicion():
             yield combustible
 
     def getList(self):
+        print("llego al get list de posiciones")
         return self    
 
-    # def insertar(self, posx, posy, combustible):
-    #     nuevo = Posicion(posx, posy, combustible)
-    #     inicio = self.inicio
-    #     if ePosx == None:
-    #         Posicion(posx, posy, combustible)
-    #         ePosx.accesoNodo = nuevo
-    #         self.eFila.setEncabezado(ePosx)
-    #         return ePosx
-    
-    # def insertarPosicion(self, posx, posy, combustible, listaPos):
-    #     nuevo = Posicion(posx, posy, combustible)
-    #     print(nuevo.posx, nuevo.posy, nuevo.combustible, "datos recividos")
-    #     nuevo.siguiente = None
-    #     if listaPos.combustible == None:
-    #          listaPos = nuevo
-    #     else:
-    #         aux = listaPos
-    #         cont = 0
-    #         while aux != None:
-    #            print(aux.posx, "posicion x", aux.posy, "posicion y", aux.combustible, "combustible")
-    #            aux = aux.siguiente
-    #            nuevo = aux
-    #     print(listaPos.posx, "soy el nodo actual")
-        
-    def imprimir(self, listaPos):
-        cont = 0
-        if listaPos.a == None:
-            print("no hay datos")
-        else:
-            aux = listaPos
-            while aux != None:
-                print("Entre ", cont)
-                print(aux.b, aux.c, aux.a)
-                aux = aux.siguiente
-                cont += 1
-        return listaPos
+  
 
     
 

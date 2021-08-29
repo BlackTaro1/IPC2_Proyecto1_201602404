@@ -1,16 +1,14 @@
 from Posicion import Posicion
-from Terrenos import Terreno
-from encabezado import listaEncabezado
 
 class listaDoblePosicion():
     def __init__(self):
         self.inicio = None
         self.fin = None
-        self.contador = 0
+        self.size = 0
 
     def insertar(self, Posx, Posy, Combustible):
         nodo = Posicion(Posx, Posy, Combustible)
-        print("nodo combustible", nodo.combustible)
+        #print("nodo combustible", nodo.combustible)
         if self.inicio is None:
             self.inicio = nodo
             self.fin = self.inicio
@@ -19,6 +17,12 @@ class listaDoblePosicion():
             self.fin.siguiente = nodo
             self.fin = nodo
         self.contador +=1
+    
+    def getPosiciones(self):
+        tmp = self.inicio
+        while tmp is not None:
+            print("x", tmp.x, "y: ", tmp.y, "combustible: ", tmp.combustible)
+            tmp = tmp.siguiente
 
     def iterar(self):
         actual = self.inicio
@@ -26,7 +30,9 @@ class listaDoblePosicion():
             combustible = actual.combustible
             actual = actual.siguiente
             yield combustible
-    
+
+    def getList(self):
+        return self    
     # def insertar(self, posx, posy, combustible):
     #     nuevo = Posicion(posx, posy, combustible)
     #     inicio = self.inicio

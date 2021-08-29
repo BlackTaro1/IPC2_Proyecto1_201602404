@@ -1,4 +1,4 @@
-from Terrenos import Terreno
+from Terrenosvfall import Terreno
 from Posicion import Posicion
 
 class listaEncabezado:
